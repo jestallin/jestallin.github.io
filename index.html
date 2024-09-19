@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket Purchase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Buy Tickets</h2>
+
+  <!-- Ticket Selection Form -->
+  <form id="ticketForm">
+    <label for="ticketCount">Select Number of Tickets:</label>
+    <select id="ticketCount" name="ticketCount" required>
+      <option value="1">1 Ticket</option>
+      <option value="2">2 Tickets</option>
+      <option value="3">3 Tickets</option>
+      <option value="4">4 Tickets</option>
+    </select>
+    <br><br>
+    <button type="submit">Proceed to Payment</button>
+  </form>
+
+  <script>
+    document.getElementById('ticketForm').onsubmit = function(event) {
+      event.preventDefault(); // Prevent form submission (default page reload)
+
+      var ticketCount = document.getElementById('ticketCount').value;
+
+      // Redirect user to the specific payment URL based on the selected number of tickets
+      var paymentUrl;
+      switch (ticketCount) {
+        case '1':
+          paymentUrl = "https://example.com/payment/1-ticket";
+          break;
+        case '2':
+          paymentUrl = "https://example.com/payment/2-tickets";
+          break;
+        case '3':
+          paymentUrl = "https://example.com/payment/3-tickets";
+          break;
+        case '4':
+          paymentUrl = "https://example.com/payment/4-tickets";
+          break;
+        default:
+          alert('Please select a valid number of tickets.');
+          return;
+      }
+
+      window.location.href = paymentUrl; // Redirect to the payment page
+    };
+  </script>
+
+</body>
+</html>
